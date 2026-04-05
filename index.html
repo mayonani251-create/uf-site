@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Useless Friendship — Académie</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c12;
+    --bg2: #0d1219;
+    --bg3: #111820;
+    --border: rgba(255,255,255,0.06);
+    --border-hover: rgba(255,255,255,0.12);
+    --text: #e8edf5;
+    --muted: #4a5568;
+    --muted2: #718096;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --gold: #f59e0b;
+    --gold2: #fcd34d;
+    --green: #10b981;
+    --red: #ef4444;
+    --purple: #8b5cf6;
+    --A: #f59e0b;
+    --B: #3b82f6;
+    --C: #10b981;
+    --D: #ef4444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+  }
+
+  /* Fond animé */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 800px 600px at 20% 20%, rgba(59,130,246,0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 600px 400px at 80% 80%, rgba(139,92,246,0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 0;
+  }
+
+  .sidebar-logo {
+    padding: 28px 24px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-logo .title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-transform: uppercase;
+  }
+
+  .sidebar-logo .subtitle {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .sidebar-section {
+    padding: 20px 16px 8px;
+  }
+
+  .sidebar-section-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 8px;
+    margin-bottom: 6px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--muted2);
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+    margin-bottom: 2px;
+  }
+
+  .nav-item:hover { background: var(--bg3); color: var(--text); }
+
+  .nav-item.active {
+    background: rgba(59,130,246,0.1);
+    color: var(--accent2);
+    border: 1px solid rgba(59,130,246,0.2);
+  }
+
+  .nav-item .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-left: auto;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .nav-icon { font-size: 14px; width: 16px; text-align: center; }
+
+  .sidebar-bottom {
+    margin-top: auto;
+    padding: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--muted2);
+  }
+
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  /* MAIN */
+  .main {
+    margin-left: 240px;
+    flex: 1;
+    padding: 40px 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* PAGE HEADER */
+  .page-header { margin-bottom: 36px; }
+
+  .page-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .page-header p {
+    font-size: 12px;
+    color: var(--muted2);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .tab {
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    color: var(--muted2);
+    background: var(--bg2);
+    transition: all 0.15s;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.03em;
+  }
+
+  .tab:hover { border-color: var(--border-hover); color: var(--text); }
+
+  .tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  /* FILTERS */
+  .filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    color: var(--muted2);
+    background: transparent;
+    transition: all 0.15s;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .filter-btn:hover { border-color: var(--border-hover); color: var(--text); }
+  .filter-btn.active { background: var(--bg3); color: var(--text); border-color: var(--border-hover); }
+  .filter-btn.classe-A.active { border-color: var(--A); color: var(--A); }
+  .filter-btn.classe-B.active { border-color: var(--B); color: var(--B); }
+  .filter-btn.classe-C.active { border-color: var(--C); color: var(--C); }
+  .filter-btn.classe-D.active { border-color: var(--D); color: var(--D); }
+
+  /* TOP 3 */
+  .podium {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .podium-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    position: relative;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .podium-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+
+  .podium-card.rank-1 {
+    border-color: rgba(245,158,11,0.3);
+    background: linear-gradient(135deg, var(--bg2) 0%, rgba(245,158,11,0.05) 100%);
+  }
+
+  .crown {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+  }
+
+  .avatar-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--border);
+  }
+
+  .avatar-wrap.rank-1 { border-color: var(--gold); }
+  .avatar-wrap.rank-2 { border-color: var(--muted2); }
+  .avatar-wrap.rank-3 { border-color: #cd7f32; }
+
+  .avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--muted2);
+    background: var(--bg3);
+  }
+
+  .podium-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+
+  .podium-classe {
+    font-size: 11px;
+    color: var(--muted2);
+    margin-bottom: 12px;
+  }
+
+  .podium-rank {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    background: var(--bg3);
+    color: var(--muted2);
+    border: 1px solid var(--border);
+  }
+
+  /* LISTE JOUEURS */
+  .player-list { display: flex; flex-direction: column; gap: 6px; }
+
+  .player-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: all 0.15s;
+    cursor: default;
+  }
+
+  .player-row:hover {
+    border-color: var(--border-hover);
+    background: var(--bg3);
+  }
+
+  .player-rank-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    width: 28px;
+    text-align: center;
+  }
+
+  .player-avatar-small {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .player-avatar-small img { width: 100%; height: 100%; object-fit: cover; }
+
+  .player-avatar-small .placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--muted2);
+    background: var(--bg3);
+  }
+
+  .player-info { flex: 1; }
+
+  .player-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .player-classe-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  .classe-badge-A { background: rgba(245,158,11,0.1); color: var(--A); border: 1px solid rgba(245,158,11,0.2); }
+  .classe-badge-B { background: rgba(59,130,246,0.1); color: var(--B); border: 1px solid rgba(59,130,246,0.2); }
+  .classe-badge-C { background: rgba(16,185,129,0.1); color: var(--C); border: 1px solid rgba(16,185,129,0.2); }
+  .classe-badge-D { background: rgba(239,68,68,0.1); color: var(--D); border: 1px solid rgba(239,68,68,0.2); }
+
+  /* CLASSES GRID */
+  .classes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .classe-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.2s;
+  }
+
+  .classe-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+
+  .classe-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .classe-letter {
+    font-family: 'Syne', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .classe-card.A .classe-letter { color: var(--A); }
+  .classe-card.B .classe-letter { color: var(--B); }
+  .classe-card.C .classe-letter { color: var(--C); }
+  .classe-card.D .classe-letter { color: var(--D); }
+
+  .classe-card.A { border-color: rgba(245,158,11,0.15); }
+  .classe-card.B { border-color: rgba(59,130,246,0.15); }
+  .classe-card.C { border-color: rgba(16,185,129,0.15); }
+  .classe-card.D { border-color: rgba(239,68,68,0.15); }
+
+  .classe-cp {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .classe-cp-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .classe-membres {
+    font-size: 11px;
+    color: var(--muted2);
+    margin-top: 16px;
+  }
+
+  .cp-bar {
+    height: 3px;
+    background: var(--bg3);
+    border-radius: 2px;
+    margin-top: 16px;
+    overflow: hidden;
+  }
+
+  .cp-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  .classe-card.A .cp-bar-fill { background: var(--A); }
+  .classe-card.B .cp-bar-fill { background: var(--B); }
+  .classe-card.C .cp-bar-fill { background: var(--C); }
+  .classe-card.D .cp-bar-fill { background: var(--D); }
+
+  /* DASHBOARD */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .stat-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  /* ÉPREUVE EN COURS */
+  .epreuve-card {
+    background: var(--bg2);
+    border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .epreuve-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--purple));
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  .epreuve-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 20px;
+    font-size: 10px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .live-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 1s infinite;
+  }
+
+  .epreuve-question {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .epreuve-type {
+    font-size: 11px;
+    color: var(--muted2);
+  }
+
+  .no-epreuve {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 28px;
+  }
+
+  /* LOADING */
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    color: var(--muted);
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* REFRESH */
+  .refresh-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .refresh-btn {
+    padding: 6px 14px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted2);
+    cursor: pointer;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    transition: all 0.15s;
+  }
+
+  .refresh-btn:hover { border-color: var(--border-hover); color: var(--text); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 2px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .sidebar { width: 200px; }
+    .main { margin-left: 200px; padding: 24px; }
+    .podium { grid-template-columns: 1fr; }
+    .classes-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="title">Useless Friendship</div>
+    <div class="subtitle">Académie</div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Navigation</div>
+    <div class="nav-item active" onclick="showPage('dashboard')">
+      <span class="nav-icon">⬡</span> Dashboard
+      <span class="dot"></span>
+    </div>
+    <div class="nav-item" onclick="showPage('classement')">
+      <span class="nav-icon">◈</span> Classement
+    </div>
+    <div class="nav-item" onclick="showPage('classes')">
+      <span class="nav-icon">◫</span> Classes
+    </div>
+  </div>
+
+  <div class="sidebar-bottom">
+    <div class="status-indicator">
+      <div class="status-dot"></div>
+      Système en ligne
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- DASHBOARD -->
+  <div class="page active" id="page-dashboard">
+    <div class="page-header">
+      <h1>Dashboard</h1>
+      <p>Vue d'ensemble de l'établissement</p>
+    </div>
+
+    <div class="refresh-bar">
+      <span id="last-update">—</span>
+      <button class="refresh-btn" onclick="fetchData()">↻ Actualiser</button>
+    </div>
+
+    <div class="stats-row" id="stats-row">
+      <div class="loading"><div class="spinner"></div></div>
+    </div>
+
+    <div id="epreuve-section">
+      <div class="loading"><div class="spinner"></div></div>
+    </div>
+
+    <div class="classes-grid" id="classes-mini">
+      <div class="loading"><div class="spinner"></div></div>
+    </div>
+  </div>
+
+  <!-- CLASSEMENT -->
+  <div class="page" id="page-classement">
+    <div class="page-header">
+      <h1>Classement</h1>
+      <p>Les meilleurs élèves de l'académie</p>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('cp')">Points Classe</div>
+      <div class="tab" onclick="switchTab('rank')">Rang général</div>
+    </div>
+
+    <div class="filters" id="filters">
+      <div class="filter-btn active" onclick="filterClasse('tous')">Tous</div>
+      <div class="filter-btn classe-A" onclick="filterClasse('A')">Classe A</div>
+      <div class="filter-btn classe-B" onclick="filterClasse('B')">Classe B</div>
+      <div class="filter-btn classe-C" onclick="filterClasse('C')">Classe C</div>
+      <div class="filter-btn classe-D" onclick="filterClasse('D')">Classe D</div>
+    </div>
+
+    <div class="podium" id="podium">
+      <div class="loading"><div class="spinner"></div></div>
+    </div>
+
+    <div class="player-list" id="player-list"></div>
+  </div>
+
+  <!-- CLASSES -->
+  <div class="page" id="page-classes">
+    <div class="page-header">
+      <h1>Classes</h1>
+      <p>Classement officiel des classes par Class Points</p>
+    </div>
+    <div class="classes-grid" id="classes-grid">
+      <div class="loading"><div class="spinner"></div></div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+const API = 'https://useless-friendship-production.up.railway.app/api/data';
+let allData = null;
+let currentTab = 'cp';
+let currentFilter = 'tous';
+
+async function fetchData() {
+  try {
+    const res = await fetch(API);
+    allData = await res.json();
+    const now = new Date();
+    document.getElementById('last-update').textContent = 
+      `Mis à jour à ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+    renderAll();
+  } catch(e) {
+    console.error('Erreur API:', e);
+    document.getElementById('last-update').textContent = 'Hors ligne';
+  }
+}
+
+function getAvatarUrl(uid) {
+  return `https://cdn.discordapp.com/embed/avatars/${parseInt(uid) % 5}.png`;
+}
+
+function getInitial(name) {
+  return name ? name[0].toUpperCase() : '?';
+}
+
+function renderAll() {
+  renderStats();
+  renderEpreuve();
+  renderClassesMini();
+  renderPodium();
+  renderPlayerList();
+  renderClassesGrid();
+}
+
+function renderStats() {
+  if (!allData) return;
+  const totalJoueurs = allData.joueurs.length;
+  const classeLeader = allData.classes.reduce((a, b) => a.cp > b.cp ? a : b);
+  const totalJoueursActifs = allData.joueurs.length;
+  const epActive = allData.epreuve ? '1' : '0';
+
+  document.getElementById('stats-row').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-label">Élèves inscrits</div>
+      <div class="stat-value">${totalJoueurs}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Classe dominante</div>
+      <div class="stat-value" style="color: var(--${classeLeader.classe})">${classeLeader.classe}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Épreuve en cours</div>
+      <div class="stat-value" style="color: ${allData.epreuve ? 'var(--accent)' : 'var(--muted)'}">${allData.epreuve ? 'OUI' : 'NON'}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Classes actives</div>
+      <div class="stat-value">${allData.classes.filter(c => c.membres > 0).length}</div>
+    </div>
+  `;
+}
+
+function renderEpreuve() {
+  if (!allData) return;
+  const el = document.getElementById('epreuve-section');
+  if (allData.epreuve) {
+    const ep = allData.epreuve;
+    const type = ep.type === 'individuel' ? '👤 Épreuve individuelle' : '🏆 Épreuve de classe';
+    const recompense = ep.type === 'individuel' 
+      ? `${ep.recompense_pp.toLocaleString()} PP` 
+      : `${ep.recompense_cp} CP`;
+    el.innerHTML = `
+      <div class="epreuve-card">
+        <div class="epreuve-badge">
+          <div class="live-dot"></div>
+          Épreuve en cours
+        </div>
+        <div class="epreuve-question">${ep.question}</div>
+        <div class="epreuve-type">${type} — Récompense : ${recompense}</div>
+      </div>
+    `;
+  } else {
+    el.innerHTML = `
+      <div class="no-epreuve">
+        Aucune épreuve en cours
+      </div>
+    `;
+  }
+}
+
+function renderClassesMini() {
+  if (!allData) return;
+  const sorted = [...allData.classes].sort((a, b) => b.cp - a.cp);
+  const maxCp = Math.max(...allData.classes.map(c => Math.abs(c.cp)), 1);
+
+  document.getElementById('classes-mini').innerHTML = sorted.map(c => `
+    <div class="classe-card ${c.classe}">
+      <div class="classe-card-header">
+        <div>
+          <div class="classe-letter">${c.classe}</div>
+        </div>
+        <div style="text-align: right">
+          <div class="classe-cp">${c.cp}</div>
+          <div class="classe-cp-label">Class Points</div>
+        </div>
+      </div>
+      <div class="cp-bar">
+        <div class="cp-bar-fill" style="width: ${Math.max(0, (c.cp / maxCp) * 100)}%"></div>
+      </div>
+      <div class="classe-membres">${c.membres} élève${c.membres > 1 ? 's' : ''}</div>
+    </div>
+  `).join('');
+}
+
+function renderPodium() {
+  if (!allData) return;
+  let players = [...allData.joueurs];
+  if (currentFilter !== 'tous') {
+    players = players.filter(p => p.classe === currentFilter);
+  }
+
+  const top3 = players.slice(0, 3);
+  const rankColors = ['rank-1', 'rank-2', 'rank-3'];
+  const rankLabels = ['#1', '#2', '#3'];
+
+  if (top3.length === 0) {
+    document.getElementById('podium').innerHTML = '';
+    return;
+  }
+
+  // Réorganiser pour mettre le #1 au centre
+  const order = top3.length >= 3 ? [top3[1], top3[0], top3[2]] : top3;
+  const orderRanks = top3.length >= 3 ? [1, 0, 2] : [0, 1, 2];
+
+  document.getElementById('podium').innerHTML = order.map((p, i) => {
+    const realRank = orderRanks[i];
+    const rankClass = rankColors[realRank];
+    const isFirst = realRank === 0;
+    return `
+      <div class="podium-card ${rankClass}">
+        ${isFirst ? '<div class="crown">👑</div>' : ''}
+        <div class="avatar-wrap ${rankClass}" style="margin-top: ${isFirst ? '12px' : '0'}">
+          <div class="avatar-placeholder">${getInitial(p.name)}</div>
+        </div>
+        <div class="podium-name">${p.name}</div>
+        <div class="podium-classe">Classe ${p.classe}</div>
+        <div class="podium-rank">${rankLabels[realRank]}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderPlayerList() {
+  if (!allData) return;
+  let players = [...allData.joueurs];
+  if (currentFilter !== 'tous') {
+    players = players.filter(p => p.classe === currentFilter);
+  }
+
+  const rest = players.slice(3);
+  if (rest.length === 0) {
+    document.getElementById('player-list').innerHTML = '';
+    return;
+  }
+
+  document.getElementById('player-list').innerHTML = rest.map((p, i) => `
+    <div class="player-row">
+      <div class="player-rank-num">${p.rank}</div>
+      <div class="player-avatar-small">
+        <div class="placeholder">${getInitial(p.name)}</div>
+      </div>
+      <div class="player-info">
+        <div class="player-name">${p.name}</div>
+        <div class="player-classe-badge classe-badge-${p.classe}">Classe ${p.classe}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderClassesGrid() {
+  if (!allData) return;
+  const sorted = [...allData.classes].sort((a, b) => b.cp - a.cp);
+  const maxCp = Math.max(...allData.classes.map(c => Math.abs(c.cp)), 1);
+
+  document.getElementById('classes-grid').innerHTML = sorted.map(c => `
+    <div class="classe-card ${c.classe}">
+      <div class="classe-card-header">
+        <div>
+          <div class="classe-letter">${c.classe}</div>
+        </div>
+        <div style="text-align: right">
+          <div class="classe-cp">${c.cp}</div>
+          <div class="classe-cp-label">Class Points</div>
+        </div>
+      </div>
+      <div class="cp-bar">
+        <div class="cp-bar-fill" style="width: ${Math.max(0, (c.cp / maxCp) * 100)}%"></div>
+      </div>
+      <div class="classe-membres">${c.membres} élève${c.membres > 1 ? 's' : ''}</div>
+    </div>
+  `).join('');
+}
+
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  // Remettre le dot sur dashboard
+  if (name === 'dashboard') {
+    event.currentTarget.innerHTML = `<span class="nav-icon">⬡</span> Dashboard<span class="dot"></span>`;
+  }
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+function filterClasse(classe) {
+  currentFilter = classe;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  renderPodium();
+  renderPlayerList();
+}
+
+// Init
+fetchData();
+setInterval(fetchData, 30000);
+</script>
+</body>
+</html>
