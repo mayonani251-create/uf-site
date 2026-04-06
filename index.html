@@ -167,7 +167,7 @@
   @keyframes shimmer { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
   /* MAIN */
-  .main { margin-left: 250px; flex: 1; padding: 36px 44px; position: relative; z-index: 1; min-height: 100vh; }
+  .main { margin-left: 250px; flex: 1; padding: 36px 44px 60px; position: relative; z-index: 1; min-height: 100vh; }
 
   .page { display: none; }
   .page.active { display: block; animation: fadeIn 0.25s ease; }
@@ -246,19 +246,16 @@
   .pod-card:hover { border-color: var(--border-h); transform: translateY(-2px); }
   .pod-card.r1 { border-color: rgba(245,158,11,0.3); background: linear-gradient(135deg, var(--bg2), rgba(245,158,11,0.05)); }
   .crown { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 18px; }
-  .pod-av { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 10px; overflow: hidden; border: 2px solid var(--border); display:flex;align-items:center;justify-content:center;background:var(--bg3); }
+  .pod-av { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 10px; overflow: hidden; border: 2px solid var(--border); }
   .pod-av.r1 { border-color: var(--gold); }
   .pod-av.r2 { border-color: #aaa; }
   .pod-av.r3 { border-color: #cd7f32; }
   .pod-av img { width: 100%; height: 100%; object-fit: cover; }
-  .pod-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--muted2); }
+  .pod-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--muted2); background: var(--bg3); }
   .pod-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-  .pod-classe { font-size: 10px; color: var(--muted2); margin-bottom: 4px; }
-  .pod-pp { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .pod-classe { font-size: 10px; color: var(--muted2); margin-bottom: 6px; }
+  .pod-pp { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
   .pod-pp span { font-size: 10px; color: var(--muted); font-weight: 400; }
-  .pod-oaa { font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--accent2);margin-bottom:4px; }
-  .pod-pi { font-size:11px;color:var(--muted2);margin-bottom:6px; }
-  .pod-analysis { font-size:10px;color:var(--muted2);font-style:italic; }
   .pod-rank { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; background: var(--bg3); color: var(--muted2); border: 1px solid var(--border); }
 
   /* PLAYER LIST */
@@ -266,16 +263,14 @@
   .prow { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--bg2); border: 1px solid var(--border); border-radius: 9px; transition: all 0.15s; }
   .prow:hover { border-color: var(--border-h); background: var(--bg3); }
   .pr-num { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--muted); width: 26px; text-align: center; }
-  .pr-av { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 1px solid var(--border); flex-shrink: 0; display:flex;align-items:center;justify-content:center;background:var(--bg3); }
+  .pr-av { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 1px solid var(--border); flex-shrink: 0; }
   .pr-av img { width: 100%; height: 100%; object-fit: cover; }
-  .pr-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px; color: var(--muted2); }
+  .pr-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px; color: var(--muted2); background: var(--bg3); }
   .pr-info { flex: 1; }
   .pr-name { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; color: var(--text); }
   .pr-sub { font-size: 10px; color: var(--muted2); margin-top: 1px; }
-  .pr-pp { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; color: var(--text); text-align:right; }
-  .pr-pp span { font-size: 10px; color: var(--muted); font-weight: 400; display:block; }
-  .pr-oaa { font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:var(--accent2); }
-  .pr-pi { font-size:10px;color:var(--muted2); }
+  .pr-pp { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--text); }
+  .pr-pp span { font-size: 10px; color: var(--muted); font-weight: 400; }
 
   .cbadge { display: inline-block; font-size: 9px; padding: 2px 7px; border-radius: 4px; margin-top: 2px; }
   .cA { background: rgba(245,158,11,0.1); color: var(--A); border: 1px solid rgba(245,158,11,0.2); }
@@ -289,11 +284,10 @@
   .ph-avatar img { width: 100%; height: 100%; object-fit: cover; }
   .ph-name { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--text); }
   .ph-sub { font-size: 11px; color: var(--muted2); margin-top: 4px; }
-  .profil-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top:14px; }
+  .profil-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .ps-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: center; }
-  .ps-val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--text); }
+  .ps-val { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--text); }
   .ps-label { font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 6px; }
-  .ps-sub { font-size:10px;color:var(--muted2);margin-top:4px; }
   .logout-btn { padding: 7px 14px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); border-radius: 7px; color: var(--red); font-size: 11px; cursor: pointer; font-family: 'DM Mono', monospace; transition: all 0.15s; margin-top: 10px; display: inline-block; }
   .logout-btn:hover { background: rgba(239,68,68,0.2); }
 
@@ -355,13 +349,248 @@
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 2px; }
+
+  /* ===================== QUESTIONNAIRE ===================== */
+  .quiz-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 14px; padding: 32px; max-width: 680px; margin: 0 auto;
+  }
+  .quiz-progress {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .quiz-bar {
+    flex: 1; height: 2px; background: var(--bg3); border-radius: 2px; overflow: hidden;
+  }
+  .quiz-bar-fill {
+    height: 100%; background: linear-gradient(90deg, var(--accent), var(--purple));
+    border-radius: 2px; transition: width 0.4s ease;
+  }
+  .quiz-step { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; white-space: nowrap; }
+  .quiz-question {
+    font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700;
+    color: var(--text); line-height: 1.5; margin-bottom: 24px;
+  }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .quiz-option {
+    padding: 14px 18px;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 10px; cursor: pointer; font-size: 12px;
+    color: var(--muted2); transition: all 0.15s;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .quiz-option:hover { border-color: var(--accent); color: var(--text); background: rgba(59,130,246,0.05); }
+  .quiz-option.selected { border-color: var(--accent); color: var(--accent2); background: rgba(59,130,246,0.08); }
+  .quiz-option-letter {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--bg4); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-family: 'Syne', sans-serif; font-weight: 700;
+    flex-shrink: 0; transition: all 0.15s;
+  }
+  .quiz-option.selected .quiz-option-letter { background: var(--accent); border-color: var(--accent); color: white; }
+  .quiz-btn {
+    padding: 12px 28px; background: var(--accent); border: none;
+    border-radius: 9px; color: white; font-size: 12px;
+    font-family: 'DM Mono', monospace; cursor: pointer;
+    transition: all 0.15s; letter-spacing: 0.03em;
+  }
+  .quiz-btn:hover { background: #2563eb; transform: translateY(-1px); }
+  .quiz-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  .quiz-result {
+    text-align: center; padding: 40px 20px;
+  }
+  .quiz-result-icon { font-size: 48px; margin-bottom: 16px; }
+  .quiz-result-title {
+    font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800;
+    color: var(--text); margin-bottom: 8px;
+  }
+  .quiz-result-score {
+    font-size: 48px; font-family: 'Syne', sans-serif; font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin: 16px 0;
+  }
+  .quiz-result-label {
+    font-size: 14px; color: var(--muted2); margin-bottom: 20px; line-height: 1.7;
+  }
+  .quiz-result-detail {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin: 24px 0; text-align: center;
+  }
+  .qrd-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px;
+  }
+  .qrd-val { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); }
+  .qrd-label { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+
+  #splash {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--bg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 28px;
+    transition: opacity 0.6s ease;
+  }
+  #splash.hidden { opacity: 0; pointer-events: none; }
+
+  .splash-logo {
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    animation: splashZoom 1.8s cubic-bezier(0.22,1,0.36,1) forwards;
+    box-shadow: 0 0 60px rgba(59,130,246,0.25);
+  }
+  @keyframes splashZoom {
+    0%   { transform: scale(0.3); opacity: 0; }
+    60%  { transform: scale(1.08); opacity: 1; }
+    80%  { transform: scale(0.97); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .splash-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800;
+    letter-spacing: 0.12em; color: var(--text);
+    text-transform: uppercase;
+    opacity: 0; animation: fadeIn 0.5s ease 1.2s forwards;
+  }
+  .splash-subtitle {
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 0.3em; text-transform: uppercase;
+    opacity: 0; animation: fadeIn 0.5s ease 1.5s forwards;
+  }
+  .splash-citation {
+    max-width: 380px; text-align: center;
+    font-size: 11px; color: var(--muted2);
+    line-height: 1.7; font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 20px; margin-top: 8px;
+    opacity: 0; animation: fadeIn 0.5s ease 1.8s forwards;
+  }
+  .splash-bar {
+    width: 160px; height: 1px;
+    background: var(--border);
+    overflow: hidden;
+    opacity: 0; animation: fadeIn 0.3s ease 1.5s forwards;
+  }
+  .splash-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--purple));
+    animation: splashLoad 1.5s ease 1.5s forwards;
+    width: 0%;
+  }
+  @keyframes splashLoad { to { width: 100%; } }
+
+  /* ===================== TICKER BAS DE PAGE ===================== */
+  .bottom-ticker {
+    position: fixed; bottom: 0; left: 250px; right: 0; z-index: 50;
+    height: 32px;
+    background: rgba(10,13,19,0.92);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+  .ticker-label {
+    padding: 0 14px;
+    font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent2);
+    border-right: 1px solid var(--border);
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .ticker-text {
+    padding: 0 20px;
+    font-size: 10px; color: var(--muted2);
+    white-space: nowrap;
+    animation: tickerScroll 30s linear infinite;
+    font-style: italic;
+  }
+  @keyframes tickerScroll {
+    0%   { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* ===================== PHRASES D'AMBIANCE ===================== */
+  .ambient-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 9px; color: var(--muted);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .ambient-tag::before { content: '◆'; font-size: 6px; color: var(--accent); }
+
+  /* ===================== OAA BADGE ===================== */
+  .oaa-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 9px; padding: 2px 8px; border-radius: 4px;
+    background: rgba(139,92,246,0.1);
+    color: var(--purple);
+    border: 1px solid rgba(139,92,246,0.2);
+    margin-top: 2px;
+  }
+
+  /* ===================== RESPONSIVE MOBILE ===================== */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%; min-height: auto;
+      position: fixed; bottom: 0; top: auto; left: 0; right: 0;
+      flex-direction: row; height: 60px;
+      border-right: none; border-top: 1px solid var(--border);
+      z-index: 200;
+    }
+    .sidebar-logo { display: none; }
+    #sidebar-user-slot { display: none; }
+    .sidebar-nav {
+      display: flex; flex-direction: row; align-items: center;
+      justify-content: space-around; flex: 1; padding: 0 8px;
+    }
+    .nav-section-label { display: none; }
+    .nav-item {
+      flex-direction: column; gap: 3px; padding: 6px 10px;
+      font-size: 9px; flex: 1; justify-content: center;
+      text-align: center; border-radius: 6px;
+    }
+    .nav-icon { font-size: 16px; width: auto; }
+    .nav-badge, .nav-live, .nav-lock { display: none; }
+    .sidebar-footer { display: none; }
+    .main { margin-left: 0; padding: 16px; padding-bottom: 80px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .classes-grid { grid-template-columns: 1fr; }
+    .podium { grid-template-columns: 1fr; }
+    .admin-grid { grid-template-columns: 1fr; }
+    .profil-stats { grid-template-columns: repeat(2, 1fr); }
+    .bottom-ticker { left: 0; display: none; }
+    .ph h1 { font-size: 20px; }
+    .profil-hero { flex-direction: column; text-align: center; }
+    .ph-avatar { margin: 0 auto; }
+  }
 </style>
 </head>
 <body>
 
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <div class="splash-logo" id="splash-logo">🎓</div>
+  <div>
+    <div class="splash-title">Useless Friendship</div>
+    <div class="splash-subtitle">Académie — Système de classement</div>
+  </div>
+  <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+  <div class="splash-citation" id="splash-citation"></div>
+</div>
 <nav class="sidebar">
   <div class="sidebar-logo">
-    <div class="logo-icon">🏫</div>
+    <div class="logo-icon" id="logo-icon">
+      <!-- Remplace le contenu par ton image : <img src="ton-logo.png" style="width:100%;height:100%;object-fit:contain;border-radius:6px"> -->
+      🎓
+    </div>
     <div class="logo-text">
       <div class="title">Useless Friendship</div>
       <div class="subtitle">Académie</div>
@@ -384,6 +613,9 @@
     <div class="nav-item" onclick="showPage('chat',this)">
       <span class="nav-icon">◎</span> Chat <span class="nav-badge" id="chat-count">—</span>
     </div>
+    <div class="nav-item" onclick="showPage('questionnaire',this)">
+      <span class="nav-icon">◈</span> Évaluation
+    </div>
 
     <span class="nav-section-label">Compte</span>
     <div class="nav-item" onclick="showPage('profil',this)">
@@ -400,6 +632,12 @@
   </div>
 </nav>
 
+<!-- TICKER BAS DE PAGE -->
+<div class="bottom-ticker">
+  <div class="ticker-label">⬡ Système</div>
+  <div class="ticker-text" id="ticker-text">L'établissement surveille. Vos performances sont enregistrées en temps réel. La hiérarchie n'est pas un acquis — elle se mérite à chaque instant.</div>
+</div>
+
 <main class="main">
 
   <!-- DASHBOARD -->
@@ -413,7 +651,7 @@
 
   <!-- CLASSEMENT -->
   <div class="page" id="page-classement">
-    <div class="ph"><h1>Classement</h1><p>Niveau académique, stabilité psychologique et performance globale</p></div>
+    <div class="ph"><h1>Classement</h1><p>Les meilleurs élèves de l'académie</p></div>
     <div class="filters">
       <div class="fb active" onclick="filterClasse('tous',this)">Tous</div>
       <div class="fb fA" onclick="filterClasse('A',this)">Classe A</div>
@@ -532,6 +770,15 @@
 
     </div>
   </div>
+  <!-- QUESTIONNAIRE -->
+  <div class="page" id="page-questionnaire">
+    <div class="ph">
+      <div class="ambient-tag">Évaluation psychologique</div>
+      <h1>Évaluation OAA</h1>
+      <p>L'établissement évalue votre profil cognitif et votre façon de penser. Répondez avec sincérité.</p>
+    </div>
+    <div id="quiz-container"></div>
+  </div>
 
 </main>
 
@@ -600,13 +847,6 @@ function getAvatar(user) {
   return `https://cdn.discordapp.com/embed/avatars/${parseInt(user.id) % 5}.png`;
 }
 
-// avatar pour un joueur du classement (si ton API renvoie p.avatar)
-function getPlayerAvatar(p) {
-  if (p.avatar) return p.avatar;
-  if (p.uid) return `https://cdn.discordapp.com/embed/avatars/${parseInt(p.uid) % 5}.png`;
-  return null;
-}
-
 function matchPlayer() {
   if (!discordUser || !allData) return;
   playerData = allData.joueurs.find(p => p.uid === discordUser.id) || null;
@@ -659,6 +899,7 @@ async function fetchData() {
 }
 
 function renderAll() {
+  buildAvatarCache();
   renderStats();
   renderEpreuve();
   renderDashClasses();
@@ -707,40 +948,35 @@ function renderDashClasses() {
   `).join('');
 }
 
-// ===================== ANALYSE OAA / PI =====================
-
-function getAnalysis(p) {
-  const oaa = p.oaa ?? 0;
-  const pi = p.pi ?? 0;
-  let base;
-  if (oaa > 80) base = 'Profil exceptionnel';
-  else if (oaa > 60) base = 'Analyse stable';
-  else if (oaa > 40) base = 'Sous observation';
-  else if (oaa > 20) base = 'Instabilité détectée';
-  else base = 'Profil préoccupant';
-
-  let suffix = '';
-  if (pi > 50) suffix = ' (risque élevé)';
-  else if (pi < 10) suffix = ' (profil calme)';
-
-  return base + suffix;
-}
-
 // ===================== CLASSEMENT =====================
 
-function sortPlayersForRanking(list) {
-  return [...list].sort((a,b) => {
-    const ao = (b.oaa ?? 0) - (a.oaa ?? 0);
-    if (ao !== 0) return ao;
-    const ap = (b.pi ?? 0) - (a.pi ?? 0);
-    if (ap !== 0) return ap;
-    return (b.pp ?? 0) - (a.pp ?? 0);
-  });
+function getDiscordAvatar(uid, name) {
+  // Cherche dans le cache d'avatars Discord (alimenté lors du login)
+  if (window.avatarCache && window.avatarCache[uid]) {
+    return `<img src="${window.avatarCache[uid]}" onerror="this.parentElement.innerHTML='<div class=\\'pod-ph\\'>${name[0].toUpperCase()}</div>'" loading="lazy">`;
+  }
+  return `<div class="pod-ph">${name[0].toUpperCase()}</div>`;
+}
+
+function getDiscordAvatarSmall(uid, name) {
+  if (window.avatarCache && window.avatarCache[uid]) {
+    return `<img src="${window.avatarCache[uid]}" onerror="this.parentElement.innerHTML='<div class=\\'pr-ph\\'>${name[0].toUpperCase()}</div>'" loading="lazy">`;
+  }
+  return `<div class="pr-ph">${name[0].toUpperCase()}</div>`;
+}
+
+function getOAALabel(oaa) {
+  if (oaa === 0) return { label: 'Inconnu', color: 'var(--muted)' };
+  if (oaa < 20)  return { label: 'Novice', color: 'var(--muted2)' };
+  if (oaa < 50)  return { label: 'Intermédiaire', color: 'var(--green)' };
+  if (oaa < 100) return { label: 'Avancé', color: 'var(--accent2)' };
+  if (oaa < 200) return { label: 'Expert', color: 'var(--purple)' };
+  return { label: 'Élite', color: 'var(--gold)' };
 }
 
 function renderPodium() {
   if (!allData) return;
-  let players = sortPlayersForRanking(allData.joueurs);
+  let players = [...allData.joueurs];
   if (currentFilter !== 'tous') players = players.filter(p => p.classe === currentFilter);
   const top3 = players.slice(0,3);
   if (!top3.length) { document.getElementById('podium').innerHTML = ''; return; }
@@ -750,21 +986,18 @@ function renderPodium() {
   const rl = ['#1','#2','#3'];
   document.getElementById('podium').innerHTML = order.map((p,i) => {
     const r = ranks[i];
-    const av = getPlayerAvatar(p);
-    const analysis = getAnalysis(p);
+    const oaaInfo = getOAALabel(p.oaa || 0);
     return `
       <div class="pod-card ${rc[r]}">
         ${r===0?'<div class="crown">👑</div>':''}
         <div class="pod-av ${rc[r]}" style="margin-top:${r===0?'12px':'0'}">
-          ${av ? `<img src="${av}" onerror="this.parentElement.innerHTML='<div class=&quot;pod-ph&quot;>${p.name[0].toUpperCase()}</div>'">`
-               : `<div class="pod-ph">${p.name[0].toUpperCase()}</div>`}
+          ${getDiscordAvatar(p.uid, p.name)}
         </div>
         <div class="pod-name">${p.name}</div>
         <div class="pod-classe">Classe ${p.classe}</div>
-        <div class="pod-oaa">${p.oaa ?? 0} OAA</div>
-        <div class="pod-pi">PI : ${p.pi ?? 0} — PP : ${p.pp.toLocaleString()} PP</div>
-        <div class="pod-analysis">“${analysis}”</div>
-        <div class="pod-rank">${rl[r]}</div>
+        <div style="font-size:11px;margin:4px 0;color:${oaaInfo.color};font-family:'Syne',sans-serif;font-weight:700">${oaaInfo.label}</div>
+        <div class="oaa-badge">⬡ OAA ${p.oaa || 0}</div>
+        <div class="pod-rank" style="margin-top:8px">${rl[r]}</div>
       </div>
     `;
   }).join('');
@@ -772,33 +1005,28 @@ function renderPodium() {
 
 function renderPlist() {
   if (!allData) return;
-  let players = sortPlayersForRanking(allData.joueurs);
+  let players = [...allData.joueurs];
   if (currentFilter !== 'tous') players = players.filter(p => p.classe === currentFilter);
   const rest = players.slice(3);
-  document.getElementById('plist').innerHTML = rest.map((p,idx) => {
-    const av = getPlayerAvatar(p);
-    const analysis = getAnalysis(p);
-    const rank = idx + 4; // après le podium
+  document.getElementById('plist').innerHTML = rest.map(p => {
+    const oaaInfo = getOAALabel(p.oaa || 0);
     return `
-      <div class="prow">
-        <div class="pr-num">${rank}</div>
-        <div class="pr-av">
-          ${av ? `<img src="${av}" onerror="this.parentElement.innerHTML='<div class=&quot;pr-ph&quot;>${p.name[0].toUpperCase()}</div>'">`
-               : `<div class="pr-ph">${p.name[0].toUpperCase()}</div>`}
-        </div>
-        <div class="pr-info">
-          <div class="pr-name">${p.name}</div>
-          <div class="pr-sub">${analysis}</div>
+    <div class="prow">
+      <div class="pr-num">${p.rank}</div>
+      <div class="pr-av">${getDiscordAvatarSmall(p.uid, p.name)}</div>
+      <div class="pr-info">
+        <div class="pr-name">${p.name}</div>
+        <div style="display:flex;gap:5px;align-items:center;margin-top:2px">
           <div class="cbadge c${p.classe}">Classe ${p.classe}</div>
-        </div>
-        <div class="pr-pp">
-          <div class="pr-oaa">${p.oaa ?? 0} OAA</div>
-          <div class="pr-pi">PI ${p.pi ?? 0}</div>
-          <span>${p.pp.toLocaleString()} PP</span>
+          <div class="oaa-badge" style="font-size:8px;padding:1px 6px">⬡ ${oaaInfo.label}</div>
         </div>
       </div>
-    `;
-  }).join('');
+      <div style="text-align:right">
+        <div style="font-size:10px;color:${oaaInfo.color};font-family:'Syne',sans-serif;font-weight:700">${oaaInfo.label}</div>
+        <div style="font-size:9px;color:var(--muted);margin-top:2px">OAA ${p.oaa || 0}</div>
+      </div>
+    </div>
+  `}).join('');
 }
 
 function filterClasse(c, btn) {
@@ -828,26 +1056,38 @@ function renderClassesGrid() {
 async function fetchMessages() {
   try {
     const res = await fetch(`${API}/api/messages`);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
     const d = await res.json();
-    const msgs = d.messages || [];
-    document.getElementById('chat-count').textContent = msgs.length;
+    const msgs = Array.isArray(d.messages) ? d.messages : [];
+    const countEl = document.getElementById('chat-count');
+    if (countEl) countEl.textContent = msgs.length || '0';
     const el = document.getElementById('chat-messages');
+    if (!el) return;
     const wasBottom = el.scrollHeight - el.scrollTop <= el.clientHeight + 50;
-    if (!msgs.length) { el.innerHTML = '<div class="chat-empty">Aucun message récent.</div>'; return; }
+    if (!msgs.length) {
+      el.innerHTML = '<div class="chat-empty">Aucun message récent dans le salon Discord.</div>';
+      return;
+    }
     el.innerHTML = msgs.map(m => {
       const time = new Date(m.timestamp).toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'});
+      const av = m.avatar
+        ? `<img src="${m.avatar}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy"><div class="cm-ph" style="display:none">${(m.author||'?')[0].toUpperCase()}</div>`
+        : `<div class="cm-ph">${(m.author||'?')[0].toUpperCase()}</div>`;
       return `
         <div class="chat-msg">
-          <div class="cm-avatar"><img src="${m.avatar}" onerror="this.parentElement.innerHTML='<div class=cm-ph>${m.author[0].toUpperCase()}</div>'"></div>
+          <div class="cm-avatar">${av}</div>
           <div class="cm-body">
-            <div class="cm-header"><span class="cm-name">${m.author}</span><span class="cm-time">${time}</span></div>
-            <div class="cm-content">${escapeHtml(m.content)}</div>
+            <div class="cm-header"><span class="cm-name">${escapeHtml(m.author||'Inconnu')}</span><span class="cm-time">${time}</span></div>
+            <div class="cm-content">${escapeHtml(m.content||'')}</div>
           </div>
         </div>
       `;
     }).join('');
     if (wasBottom) el.scrollTop = el.scrollHeight;
-  } catch(e) {}
+  } catch(e) {
+    const el = document.getElementById('chat-messages');
+    if (el) el.innerHTML = `<div class="chat-empty">⚠️ Impossible de charger les messages. Vérifiez que le bot est en ligne.</div>`;
+  }
 }
 
 function escapeHtml(s) {
@@ -887,39 +1127,21 @@ function renderProfil() {
     return;
   }
   const classeInfo = allData ? allData.classes.find(c => c.classe === playerData.classe) : null;
-  const analysis = getAnalysis(playerData);
   el.innerHTML = `
-    <div class="ph"><h1>Profil</h1><p>Votre dossier académique et comportemental</p></div>
+    <div class="ph"><h1>Profil</h1><p>Vos informations personnelles</p></div>
     <div class="profil-hero">
       <div class="ph-avatar"><img src="${av}"></div>
       <div style="flex:1">
         <div class="ph-name">${discordUser.username}</div>
-        <div class="ph-sub" style="color:var(--${playerData.classe})">Classe ${playerData.classe} — “${analysis}”</div>
+        <div class="ph-sub" style="color:var(--${playerData.classe})">Classe ${playerData.classe}</div>
         <div class="logout-btn" onclick="logoutDiscord()" style="margin-top:12px">Se déconnecter</div>
       </div>
       <div class="cbadge c${playerData.classe}" style="font-size:13px;padding:7px 14px">Classe ${playerData.classe}</div>
     </div>
     <div class="profil-stats">
-      <div class="ps-card">
-        <div class="ps-val">${playerData.oaa ?? 0}</div>
-        <div class="ps-label">OAA</div>
-        <div class="ps-sub">Niveau académique</div>
-      </div>
-      <div class="ps-card">
-        <div class="ps-val">${playerData.pi ?? 0}</div>
-        <div class="ps-label">PI</div>
-        <div class="ps-sub">Indice psychologique</div>
-      </div>
-      <div class="ps-card">
-        <div class="ps-val">${playerData.pp.toLocaleString()}</div>
-        <div class="ps-label">Private Points</div>
-        <div class="ps-sub">Performance brute</div>
-      </div>
-      <div class="ps-card">
-        <div class="ps-val">${classeInfo ? classeInfo.cp : '—'}</div>
-        <div class="ps-label">CP de votre classe</div>
-        <div class="ps-sub">Influence collective</div>
-      </div>
+      <div class="ps-card"><div class="ps-val">#${playerData.rank}</div><div class="ps-label">Classement général</div></div>
+      <div class="ps-card"><div class="ps-val">${playerData.pp.toLocaleString()}</div><div class="ps-label">Private Points</div></div>
+      <div class="ps-card"><div class="ps-val">${classeInfo ? classeInfo.cp : '—'}</div><div class="ps-label">CP de votre classe</div></div>
     </div>
   `;
 }
@@ -1044,10 +1266,313 @@ function showPage(name, el) {
 
   if (name === 'profil') renderProfil();
   if (name === 'admin') { renderAdminState(); populateAdminPlayers(); }
+  if (name === 'questionnaire') renderQuiz();
+}
+
+// ===================== QUESTIONNAIRE =====================
+
+const QUIZ_QUESTIONS = [
+  {
+    q: "Face à un problème complexe, votre première réaction est de :",
+    opts: [
+      "Analyser méthodiquement chaque composante avant d'agir",
+      "Passer à l'action immédiatement et ajuster en chemin",
+      "Demander l'avis des autres avant de décider",
+      "Attendre que la situation se clarifie d'elle-même"
+    ],
+    scores: [3, 2, 1, 0]
+  },
+  {
+    q: "Lorsque vous échouez à quelque chose d'important, vous :",
+    opts: [
+      "Analysez précisément ce qui s'est passé pour ne pas répéter l'erreur",
+      "Passez rapidement à autre chose sans trop vous attarder",
+      "Cherchez une cause externe à votre échec",
+      "Ressentez une forte démotivation difficile à surmonter"
+    ],
+    scores: [3, 2, 0, 1]
+  },
+  {
+    q: "Dans un groupe, vous avez naturellement tendance à :",
+    opts: [
+      "Prendre le leadership et structurer les décisions",
+      "Proposer des idées créatives et originales",
+      "Assurer la cohésion et l'harmonie du groupe",
+      "Exécuter les tâches qu'on vous confie sans chercher à diriger"
+    ],
+    scores: [3, 3, 2, 1]
+  },
+  {
+    q: "Votre rapport à l'apprentissage est :",
+    opts: [
+      "Vous cherchez activement à apprendre de nouvelles choses chaque jour",
+      "Vous apprenez quand vous en avez besoin ou envie",
+      "Vous apprenez sous contrainte externe (obligation, pression)",
+      "L'apprentissage vous demande un effort important que vous évitez"
+    ],
+    scores: [3, 2, 1, 0]
+  },
+  {
+    q: "Comment réagissez-vous face à une règle qui vous semble injuste ?",
+    opts: [
+      "Vous la respectez tout en cherchant à la changer par des voies légitimes",
+      "Vous l'ignorez si vous pensez avoir raison",
+      "Vous vous y conformez sans la questionner",
+      "Vous exprimez votre mécontentement sans nécessairement agir"
+    ],
+    scores: [3, 1, 1, 2]
+  },
+  {
+    q: "Quelle affirmation vous correspond le mieux ?",
+    opts: [
+      "Je peux accomplir presque tout si j'y mets assez d'effort",
+      "Certaines choses sont hors de ma portée, et c'est acceptable",
+      "Le talent naturel compte plus que le travail",
+      "La chance joue un rôle majeur dans la réussite"
+    ],
+    scores: [3, 2, 0, 1]
+  },
+  {
+    q: "Lorsque quelqu'un vous critique, vous :",
+    opts: [
+      "Écoutez attentivement pour identifier ce qui est constructif",
+      "Défendez votre position si vous êtes convaincu d'avoir raison",
+      "Vous sentez blessé mais essayez de ne pas le montrer",
+      "Rejetez la critique si elle vient d'une personne que vous ne respectez pas"
+    ],
+    scores: [3, 2, 1, 1]
+  },
+  {
+    q: "Votre horizon temporel de réflexion naturel est :",
+    opts: [
+      "Long terme — vous pensez à des objectifs sur plusieurs années",
+      "Moyen terme — quelques mois à un an",
+      "Court terme — la semaine ou le mois en cours",
+      "Immédiat — vous vous concentrez sur l'instant présent"
+    ],
+    scores: [3, 2, 1, 0]
+  },
+  {
+    q: "Face à l'incertitude, vous :",
+    opts: [
+      "Créez un cadre pour naviguer malgré le manque d'information",
+      "Cherchez plus d'informations avant de vous engager",
+      "Évitez de décider tant que la situation n'est pas claire",
+      "Ressentez une anxiété qui nuit à votre capacité à agir"
+    ],
+    scores: [3, 2, 1, 0]
+  },
+  {
+    q: "Ce qui vous motive principalement à vous améliorer, c'est :",
+    opts: [
+      "La quête de votre propre excellence, indépendamment du regard des autres",
+      "La compétition avec les autres et le désir de les surpasser",
+      "La reconnaissance et l'approbation sociale",
+      "La peur des conséquences si vous ne progressez pas"
+    ],
+    scores: [3, 2, 1, 0]
+  },
+];
+
+let quizState = {
+  current: 0,
+  answers: [],
+  started: false,
+  finished: false,
+};
+
+function getOAAProfile(total) {
+  if (total >= 28) return { label: 'Élite Cognitif', icon: '🏆', desc: "Votre profil révèle une capacité d'adaptation exceptionnelle, une pensée systémique développée et une motivation intrinsèque forte. Vous êtes exactement le type de profil que l'établissement cherche à former.", color: 'var(--gold)' };
+  if (total >= 22) return { label: 'Expert', icon: '⚡', desc: "Vous démontrez une maturité intellectuelle significative et une capacité à vous remettre en question. Avec de la constance, vous avez le potentiel d'atteindre le sommet de la hiérarchie.", color: 'var(--purple)' };
+  if (total >= 16) return { label: 'Avancé', icon: '◈', desc: "Votre profil est solide mais présente des zones de fragilité. Vous avez les fondations pour progresser, à condition de travailler vos angles morts.", color: 'var(--accent2)' };
+  if (total >= 10) return { label: 'Intermédiaire', icon: '◉', desc: "Vous montrez des signes de potentiel, mais votre développement reste irrégulier. L'établissement vous encourage à identifier ce qui freine votre progression.", color: 'var(--green)' };
+  return { label: 'Novice', icon: '◦', desc: "Votre profil actuel révèle des blocages importants. Ce n'est pas un jugement définitif — c'est une invitation à vous interroger sérieusement sur votre rapport à l'effort et à la croissance.", color: 'var(--muted2)' };
+}
+
+function renderQuiz() {
+  const el = document.getElementById('quiz-container');
+  if (!el) return;
+
+  if (quizState.finished) {
+    const total = quizState.answers.reduce((s, a) => s + a, 0);
+    const max = QUIZ_QUESTIONS.length * 3;
+    const pct = Math.round((total / max) * 100);
+    const profile = getOAAProfile(total);
+    const curiosite = Math.round((quizState.answers.slice(0,3).reduce((s,a)=>s+a,0)/9)*100);
+    const resilience = Math.round((quizState.answers.slice(3,6).reduce((s,a)=>s+a,0)/9)*100);
+    const autonomie = Math.round((quizState.answers.slice(6,10).reduce((s,a)=>s+a,0)/12)*100);
+    el.innerHTML = `
+      <div class="quiz-card">
+        <div class="quiz-result">
+          <div class="quiz-result-icon">${profile.icon}</div>
+          <div class="quiz-result-title">Évaluation complète</div>
+          <div class="quiz-result-score">${pct}<span style="font-size:20px;-webkit-text-fill-color:var(--muted)">%</span></div>
+          <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:${profile.color};margin-bottom:12px">${profile.label}</div>
+          <div class="quiz-result-label">${profile.desc}</div>
+          <div class="quiz-result-detail">
+            <div class="qrd-card"><div class="qrd-val" style="color:var(--accent2)">${curiosite}%</div><div class="qrd-label">Curiosité</div></div>
+            <div class="qrd-card"><div class="qrd-val" style="color:var(--green)">${resilience}%</div><div class="qrd-label">Résilience</div></div>
+            <div class="qrd-card"><div class="qrd-val" style="color:var(--purple)">${autonomie}%</div><div class="qrd-label">Autonomie</div></div>
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-top:16px;line-height:1.6;border-top:1px solid var(--border);padding-top:16px">
+            ☆ L'OAA mesure vos performances lors des épreuves sur Discord.<br>Ce questionnaire évalue votre profil psychologique — il ne modifie pas votre score OAA.
+          </div>
+          <button class="quiz-btn" style="margin-top:20px" onclick="quizState={current:0,answers:[],started:false,finished:false};renderQuiz()">Recommencer l'évaluation</button>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  if (!quizState.started) {
+    el.innerHTML = `
+      <div class="quiz-card" style="text-align:center">
+        <div style="font-size:32px;margin-bottom:16px">◈</div>
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--text);margin-bottom:12px">Évaluation du Profil Cognitif</div>
+        <div style="font-size:12px;color:var(--muted2);line-height:1.8;max-width:480px;margin:0 auto 24px">
+          Ce questionnaire de ${QUIZ_QUESTIONS.length} questions évalue votre façon de penser, votre rapport à l'échec, à l'apprentissage et à l'effort.<br><br>
+          <span style="color:var(--muted);font-size:11px">L'établissement n'évalue pas ce que vous savez. Il évalue comment vous pensez.</span>
+        </div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:11px;color:var(--muted2)">⏱ ~5 minutes</div>
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:11px;color:var(--muted2)">◈ ${QUIZ_QUESTIONS.length} questions</div>
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:11px;color:var(--muted2)">⬡ Profil détaillé</div>
+        </div>
+        <button class="quiz-btn" onclick="quizState.started=true;renderQuiz()">Commencer l'évaluation</button>
+      </div>
+    `;
+    return;
+  }
+
+  const q = QUIZ_QUESTIONS[quizState.current];
+  const pct = (quizState.current / QUIZ_QUESTIONS.length) * 100;
+  const selected = quizState.answers[quizState.current];
+  const letters = ['A', 'B', 'C', 'D'];
+
+  el.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-progress">
+        <div class="quiz-bar"><div class="quiz-bar-fill" style="width:${pct}%"></div></div>
+        <div class="quiz-step">${quizState.current + 1} / ${QUIZ_QUESTIONS.length}</div>
+      </div>
+      <div class="quiz-question">${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((opt, i) => `
+          <div class="quiz-option ${selected === i ? 'selected' : ''}" onclick="selectQuizAnswer(${i})">
+            <div class="quiz-option-letter">${letters[i]}</div>
+            <span>${opt}</span>
+          </div>
+        `).join('')}
+      </div>
+      <button class="quiz-btn" ${selected === undefined ? 'disabled' : ''} onclick="nextQuizQuestion()">
+        ${quizState.current < QUIZ_QUESTIONS.length - 1 ? 'Question suivante →' : 'Voir mon profil'}
+      </button>
+    </div>
+  `;
+}
+
+function selectQuizAnswer(idx) {
+  quizState.answers[quizState.current] = idx;
+  renderQuiz();
+}
+
+function nextQuizQuestion() {
+  const selected = quizState.answers[quizState.current];
+  if (selected === undefined) return;
+  // Enregistre le score de cette réponse
+  quizState.answers[quizState.current] = QUIZ_QUESTIONS[quizState.current].scores[selected];
+  if (quizState.current < QUIZ_QUESTIONS.length - 1) {
+    quizState.current++;
+    renderQuiz();
+  } else {
+    quizState.finished = true;
+    renderQuiz();
+  }
+}
+
+
+
+const CITATIONS = [
+  "« L'intelligence n'est pas un don. C'est une dette envers ceux qui ont cru en vous. »",
+  "« La hiérarchie n'est pas une injustice. C'est le reflet exact de ce que vous avez accompli. »",
+  "« Ceux qui échouent cherchent des excuses. Ceux qui réussissent cherchent des méthodes. »",
+  "« L'établissement ne juge pas vos intentions. Il mesure vos résultats. »",
+  "« La médiocrité est confortable. C'est pour cela qu'elle est si dangereuse. »",
+  "« On ne change pas en restant à sa place. On change en acceptant d'être déplacé. »",
+  "« Ce que vous êtes aujourd'hui est la somme de chaque choix que vous n'avez pas osé faire. »",
+  "« L'inconfort est le seul terrain sur lequel la croissance est possible. »",
+  "« Vous n'êtes pas ici pour être à l'aise. Vous êtes ici pour devenir meilleur. »",
+  "« La plupart des gens surestiment ce qu'ils sont et sous-estiment ce qu'ils pourraient être. »",
+  "« L'échec n'est pas une fin. C'est une information. »",
+  "« La confiance sans preuve est une illusion. La preuve sans effort est impossible. »",
+  "« Ceux qui observent en silence apprennent plus que ceux qui parlent sans cesse. »",
+  "« Votre rang actuel n'est pas votre destin. C'est votre point de départ. »",
+  "« L'établissement enregistre tout. Chaque absence. Chaque erreur. Chaque silence. »",
+  "« Se comparer aux autres est une perte de temps. Se comparer à soi-même d'hier — voilà le vrai défi. »",
+  "« La discipline est la forme la plus haute de liberté. »",
+  "« Ce n'est pas l'adversité qui vous définit. C'est ce que vous en faites. »",
+  "« Les personnes remarquables font des choses ordinaires de manière extraordinaire. »",
+  "« Vouloir progresser sans accepter d'être jugé, c'est vouloir nager sans toucher l'eau. »",
+];
+
+const TICKER_MSGS = [
+  "L'établissement surveille. Vos performances sont enregistrées en temps réel.",
+  "La hiérarchie n'est pas un acquis — elle se mérite à chaque instant.",
+  "Chaque action, chaque inaction, est consignée dans le dossier de l'élève.",
+  "L'OAA mesure vos performances individuelles. Il évolue uniquement lors des épreuves.",
+  "Un esprit affûté est la ressource la plus rare et la plus précieuse de cet établissement.",
+  "La Classe D observe. La Classe A n'attend pas d'être observée.",
+  "Les transferts de Private Points engagent votre responsabilité. Réfléchissez avant d'agir.",
+  "L'administration se réserve le droit de modifier la hiérarchie à tout moment.",
+];
+
+window.avatarCache = {};
+
+function buildAvatarCache() {
+  if (!allData) return;
+  // Récupère les avatars Discord depuis CDN pour tous les joueurs connus
+  allData.joueurs.forEach(p => {
+    if (!window.avatarCache[p.uid]) {
+      // On tente de construire l'URL avatar via Discord CDN
+      // Le vrai avatar nécessite le hash (disponible seulement si connecté)
+      // Pour les autres on utilisera la lettre initiale
+      if (discordUser && discordUser.id === p.uid && discordUser.avatar) {
+        window.avatarCache[p.uid] = `https://cdn.discordapp.com/avatars/${p.uid}/${discordUser.avatar}.png?size=64`;
+      }
+    }
+  });
+}
+
+function initSplash() {
+  const citation = CITATIONS[Math.floor(Math.random() * CITATIONS.length)];
+  const el = document.getElementById('splash-citation');
+  if (el) el.textContent = citation;
+
+  // Ferme le splash après 3.2s
+  setTimeout(() => {
+    const splash = document.getElementById('splash');
+    if (splash) {
+      splash.classList.add('hidden');
+      setTimeout(() => splash.remove(), 700);
+    }
+  }, 3200);
+}
+
+function initTicker() {
+  const msg = TICKER_MSGS[Math.floor(Math.random() * TICKER_MSGS.length)];
+  const el = document.getElementById('ticker-text');
+  if (el) el.textContent = msg;
+  // Change le message toutes les 30s
+  setInterval(() => {
+    const newMsg = TICKER_MSGS[Math.floor(Math.random() * TICKER_MSGS.length)];
+    if (el) el.textContent = newMsg;
+  }, 30000);
 }
 
 // ===================== INIT =====================
 
+initSplash();
+initTicker();
 handleAuth();
 renderSidebarUser();
 fetchData();
