@@ -638,40 +638,52 @@
   }
 
   /* ===================== RESPONSIVE MOBILE ===================== */
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 100%; min-height: auto;
-      position: fixed; bottom: 0; top: auto; left: 0; right: 0;
-      flex-direction: row; height: 60px;
-      border-right: none; border-top: 1px solid var(--border);
-      z-index: 200;
-    }
-    .sidebar-logo { display: none; }
-    #sidebar-user-slot { display: none; }
-    .sidebar-nav {
-      display: flex; flex-direction: row; align-items: center;
-      justify-content: space-around; flex: 1; padding: 0 8px;
-    }
-    .nav-section-label { display: none; }
-    .nav-item {
-      flex-direction: column; gap: 3px; padding: 6px 10px;
-      font-size: 9px; flex: 1; justify-content: center;
-      text-align: center; border-radius: 6px;
-    }
-    .nav-icon { font-size: 16px; width: auto; }
-    .nav-badge, .nav-live, .nav-lock { display: none; }
-    .sidebar-footer { display: none; }
-    .main { margin-left: 0; padding: 16px; padding-bottom: 80px; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .classes-grid { grid-template-columns: 1fr; }
-    .podium { grid-template-columns: 1fr; }
-    .admin-grid { grid-template-columns: 1fr; }
-    .profil-stats { grid-template-columns: repeat(2, 1fr); }
-    .bottom-ticker { left: 0; display: none; }
-    .ph h1 { font-size: 20px; }
-    .profil-hero { flex-direction: column; text-align: center; }
-    .ph-avatar { margin: 0 auto; }
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%; min-height: auto;
+    position: fixed; bottom: 0; top: auto; left: 0; right: 0;
+    flex-direction: row; height: 60px;
+    border-right: none; border-top: 1px solid var(--border);
+    z-index: 200;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
+  .sidebar-logo { display: none; }
+  #sidebar-user-slot { display: none; }
+  .sidebar-nav {
+    display: flex; flex-direction: row; align-items: center;
+    justify-content: flex-start;
+    flex: 1; padding: 0 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 2px;
+    min-width: 0;
+  }
+  .sidebar-nav::-webkit-scrollbar { display: none; }
+  .nav-section-label { display: none; }
+  .nav-item {
+    flex-direction: column; gap: 2px; padding: 5px 10px;
+    font-size: 9px; flex-shrink: 0;
+    justify-content: center;
+    text-align: center; border-radius: 6px;
+    min-width: 56px;
+    white-space: nowrap;
+  }
+  .nav-icon { font-size: 16px; width: auto; }
+  .nav-badge, .nav-live, .nav-lock { display: none; }
+  .sidebar-footer { display: none; }
+  .main { margin-left: 0; padding: 16px; padding-bottom: 80px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .classes-grid { grid-template-columns: 1fr; }
+  .podium { grid-template-columns: 1fr; }
+  .admin-grid { grid-template-columns: 1fr; }
+  .profil-stats { grid-template-columns: repeat(2, 1fr); }
+  .bottom-ticker { left: 0; display: none; }
+  .ph h1 { font-size: 20px; }
+  .profil-hero { flex-direction: column; text-align: center; }
+  .ph-avatar { margin: 0 auto; }
+}
 </style>
 </head>
 <body>
@@ -874,6 +886,18 @@
 
     </div>
   </div>
+
+<!-- QUESTIONNAIRE OAA -->
+  <div class="page" id="page-questionnaire">
+    <div class="ph">
+      <div class="ambient-tag">Évaluation psychologique</div>
+      <h1>Évaluation OAA</h1>
+      <p>L'établissement évalue votre profil cognitif et votre façon de penser. Répondez avec sincérité.</p>
+    </div>
+    <div id="quiz-container"></div>
+  </div>
+
+
   <!-- EXAMENS -->
   <div class="page" id="page-examens">
     <div class="ph">
@@ -886,7 +910,6 @@
     </div>
   </div>
 
-</main>
 </main>
 
 <script>
