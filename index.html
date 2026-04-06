@@ -878,6 +878,24 @@
         <div id="cp-msg"></div>
       </div>
 
+      <!-- Gérer les OAA -->
+<div class="admin-card">
+  <div class="admin-card-title">⬡ Gérer les OAA</div>
+  <div class="form-group">
+    <label class="form-label">Joueur</label>
+    <select class="form-select" id="oaa-player"></select>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Montant</label>
+    <input class="form-input" id="oaa-amount" type="number" placeholder="5">
+  </div>
+  <button class="admin-btn green" onclick="modifyOAA(1)">+ Ajouter des OAA</button>
+  <button class="admin-btn red" onclick="modifyOAA(-1)" style="margin-top:8px">− Retirer des OAA</button>
+  <div id="oaa-msg"></div>
+</div>
+
+
+
       <!-- Épreuve en cours -->
       <div class="admin-card">
         <div class="admin-card-title">📊 État actuel</div>
@@ -1350,6 +1368,33 @@ async function modifyCP(sign) {
   } catch(e) { showMsg('cp-msg', '❌ Erreur réseau', 'err'); }
 }
 
+async function modifyOAA(sign) {
+  const uid = document.getElementById('oaa-player').value;
+  const amount = parseInt(document.getElementById('oaa-amount').value) * sign;
+  if (!uid || !amount) { showMsg('oaa-msg', '❌ Sélectionnez un joueur et un montant.', 'err'); return; }
+  try {
+    const res = await fetch(`${API}/api/admin/addoaa`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({password: ADMIN_PASS, uid, amount})
+    });
+    const d = await res.json();
+    if (d.success) { showMsg('oaa-msg', `✅ ${amount > 0 ? '+' : ''}${amount} OAA appliqués.`, 'ok'); fetchData(); }
+    else showMsg('oaa-msg', '❌ ' + (d.error || 'Erreur'), 'err');
+  } catch(e) { showMsg('oaa-msg', '❌ Erreur réseau', 'err'); }
+}
+
+async function supprimerExamen(idx) {
+  if (!confirm('Supprimer cet examen de l\'historique ?')) return;
+  try {
+    const res = await fetch(`${API}/api/admin/examen/supprimer`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({password: ADMIN_PASS, index: idx})
+    });
+    const d = await res.json();
+    if (d.success) renderExamens();
+  } catch(e) {}
+}
+
 function renderAdminState() {
   const el = document.getElementById('admin-state');
   if (!el || !allData) return;
@@ -1395,7 +1440,8 @@ function showPage(name, el) {
   }
 
   if (name === 'profil') renderProfil();
-  if (name === 'admin') { renderAdminState(); populateAdminPlayers(); }
+  if (name === 'admin') { renderAdminState(); populateAdminPlayers(); } const selOaa = document.getElementById('oaa-player');
+if (selOaa) selOaa.innerHTML = allData.joueurs.map(p => `<option value="${p.uid}">${p.name} (OAA: ${p.oaa || 0})</option>`).join('');
   if (name === 'questionnaire') renderQuiz();
   if (name === 'examens') renderExamens();
 }
@@ -1530,6 +1576,7 @@ function renderHistoCard(ex, idx) {
       <div class="histo-top">
         <div>
           <div class="histo-titre">${ex.titre}</div>
+${discordUser && discordUser.id === OWNER_ID ? `<button onclick="event.stopPropagation();supprimerExamen(${idx})" style="padding:3px 8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:5px;color:var(--red);font-size:10px;cursor:pointer;font-family:'DM Mono',monospace">🗑 Supprimer</button>` : ''}
           <div class="histo-date">${ex.date}</div>
         </div>
         <span style="color:var(--muted);font-size:12px">▾</span>
