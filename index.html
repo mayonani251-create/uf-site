@@ -246,16 +246,19 @@
   .pod-card:hover { border-color: var(--border-h); transform: translateY(-2px); }
   .pod-card.r1 { border-color: rgba(245,158,11,0.3); background: linear-gradient(135deg, var(--bg2), rgba(245,158,11,0.05)); }
   .crown { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 18px; }
-  .pod-av { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 10px; overflow: hidden; border: 2px solid var(--border); }
+  .pod-av { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 10px; overflow: hidden; border: 2px solid var(--border); display:flex;align-items:center;justify-content:center;background:var(--bg3); }
   .pod-av.r1 { border-color: var(--gold); }
   .pod-av.r2 { border-color: #aaa; }
   .pod-av.r3 { border-color: #cd7f32; }
   .pod-av img { width: 100%; height: 100%; object-fit: cover; }
-  .pod-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--muted2); background: var(--bg3); }
+  .pod-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--muted2); }
   .pod-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-  .pod-classe { font-size: 10px; color: var(--muted2); margin-bottom: 6px; }
-  .pod-pp { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .pod-classe { font-size: 10px; color: var(--muted2); margin-bottom: 4px; }
+  .pod-pp { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
   .pod-pp span { font-size: 10px; color: var(--muted); font-weight: 400; }
+  .pod-oaa { font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--accent2);margin-bottom:4px; }
+  .pod-pi { font-size:11px;color:var(--muted2);margin-bottom:6px; }
+  .pod-analysis { font-size:10px;color:var(--muted2);font-style:italic; }
   .pod-rank { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; background: var(--bg3); color: var(--muted2); border: 1px solid var(--border); }
 
   /* PLAYER LIST */
@@ -263,14 +266,16 @@
   .prow { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--bg2); border: 1px solid var(--border); border-radius: 9px; transition: all 0.15s; }
   .prow:hover { border-color: var(--border-h); background: var(--bg3); }
   .pr-num { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--muted); width: 26px; text-align: center; }
-  .pr-av { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 1px solid var(--border); flex-shrink: 0; }
+  .pr-av { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 1px solid var(--border); flex-shrink: 0; display:flex;align-items:center;justify-content:center;background:var(--bg3); }
   .pr-av img { width: 100%; height: 100%; object-fit: cover; }
-  .pr-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px; color: var(--muted2); background: var(--bg3); }
+  .pr-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px; color: var(--muted2); }
   .pr-info { flex: 1; }
   .pr-name { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; color: var(--text); }
   .pr-sub { font-size: 10px; color: var(--muted2); margin-top: 1px; }
-  .pr-pp { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--text); }
-  .pr-pp span { font-size: 10px; color: var(--muted); font-weight: 400; }
+  .pr-pp { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; color: var(--text); text-align:right; }
+  .pr-pp span { font-size: 10px; color: var(--muted); font-weight: 400; display:block; }
+  .pr-oaa { font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:var(--accent2); }
+  .pr-pi { font-size:10px;color:var(--muted2); }
 
   .cbadge { display: inline-block; font-size: 9px; padding: 2px 7px; border-radius: 4px; margin-top: 2px; }
   .cA { background: rgba(245,158,11,0.1); color: var(--A); border: 1px solid rgba(245,158,11,0.2); }
@@ -284,10 +289,11 @@
   .ph-avatar img { width: 100%; height: 100%; object-fit: cover; }
   .ph-name { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--text); }
   .ph-sub { font-size: 11px; color: var(--muted2); margin-top: 4px; }
-  .profil-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .profil-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top:14px; }
   .ps-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: center; }
-  .ps-val { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--text); }
+  .ps-val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--text); }
   .ps-label { font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 6px; }
+  .ps-sub { font-size:10px;color:var(--muted2);margin-top:4px; }
   .logout-btn { padding: 7px 14px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); border-radius: 7px; color: var(--red); font-size: 11px; cursor: pointer; font-family: 'DM Mono', monospace; transition: all 0.15s; margin-top: 10px; display: inline-block; }
   .logout-btn:hover { background: rgba(239,68,68,0.2); }
 
@@ -407,7 +413,7 @@
 
   <!-- CLASSEMENT -->
   <div class="page" id="page-classement">
-    <div class="ph"><h1>Classement</h1><p>Les meilleurs élèves de l'académie</p></div>
+    <div class="ph"><h1>Classement</h1><p>Niveau académique, stabilité psychologique et performance globale</p></div>
     <div class="filters">
       <div class="fb active" onclick="filterClasse('tous',this)">Tous</div>
       <div class="fb fA" onclick="filterClasse('A',this)">Classe A</div>
@@ -594,6 +600,13 @@ function getAvatar(user) {
   return `https://cdn.discordapp.com/embed/avatars/${parseInt(user.id) % 5}.png`;
 }
 
+// avatar pour un joueur du classement (si ton API renvoie p.avatar)
+function getPlayerAvatar(p) {
+  if (p.avatar) return p.avatar;
+  if (p.uid) return `https://cdn.discordapp.com/embed/avatars/${parseInt(p.uid) % 5}.png`;
+  return null;
+}
+
 function matchPlayer() {
   if (!discordUser || !allData) return;
   playerData = allData.joueurs.find(p => p.uid === discordUser.id) || null;
@@ -694,11 +707,40 @@ function renderDashClasses() {
   `).join('');
 }
 
+// ===================== ANALYSE OAA / PI =====================
+
+function getAnalysis(p) {
+  const oaa = p.oaa ?? 0;
+  const pi = p.pi ?? 0;
+  let base;
+  if (oaa > 80) base = 'Profil exceptionnel';
+  else if (oaa > 60) base = 'Analyse stable';
+  else if (oaa > 40) base = 'Sous observation';
+  else if (oaa > 20) base = 'Instabilité détectée';
+  else base = 'Profil préoccupant';
+
+  let suffix = '';
+  if (pi > 50) suffix = ' (risque élevé)';
+  else if (pi < 10) suffix = ' (profil calme)';
+
+  return base + suffix;
+}
+
 // ===================== CLASSEMENT =====================
+
+function sortPlayersForRanking(list) {
+  return [...list].sort((a,b) => {
+    const ao = (b.oaa ?? 0) - (a.oaa ?? 0);
+    if (ao !== 0) return ao;
+    const ap = (b.pi ?? 0) - (a.pi ?? 0);
+    if (ap !== 0) return ap;
+    return (b.pp ?? 0) - (a.pp ?? 0);
+  });
+}
 
 function renderPodium() {
   if (!allData) return;
-  let players = [...allData.joueurs];
+  let players = sortPlayersForRanking(allData.joueurs);
   if (currentFilter !== 'tous') players = players.filter(p => p.classe === currentFilter);
   const top3 = players.slice(0,3);
   if (!top3.length) { document.getElementById('podium').innerHTML = ''; return; }
@@ -708,15 +750,20 @@ function renderPodium() {
   const rl = ['#1','#2','#3'];
   document.getElementById('podium').innerHTML = order.map((p,i) => {
     const r = ranks[i];
+    const av = getPlayerAvatar(p);
+    const analysis = getAnalysis(p);
     return `
       <div class="pod-card ${rc[r]}">
         ${r===0?'<div class="crown">👑</div>':''}
         <div class="pod-av ${rc[r]}" style="margin-top:${r===0?'12px':'0'}">
-          <div class="pod-ph">${p.name[0].toUpperCase()}</div>
+          ${av ? `<img src="${av}" onerror="this.parentElement.innerHTML='<div class=&quot;pod-ph&quot;>${p.name[0].toUpperCase()}</div>'">`
+               : `<div class="pod-ph">${p.name[0].toUpperCase()}</div>`}
         </div>
         <div class="pod-name">${p.name}</div>
         <div class="pod-classe">Classe ${p.classe}</div>
-        <div class="pod-pp">${p.pp.toLocaleString()} <span>PP</span></div>
+        <div class="pod-oaa">${p.oaa ?? 0} OAA</div>
+        <div class="pod-pi">PI : ${p.pi ?? 0} — PP : ${p.pp.toLocaleString()} PP</div>
+        <div class="pod-analysis">“${analysis}”</div>
         <div class="pod-rank">${rl[r]}</div>
       </div>
     `;
@@ -725,20 +772,33 @@ function renderPodium() {
 
 function renderPlist() {
   if (!allData) return;
-  let players = [...allData.joueurs];
+  let players = sortPlayersForRanking(allData.joueurs);
   if (currentFilter !== 'tous') players = players.filter(p => p.classe === currentFilter);
   const rest = players.slice(3);
-  document.getElementById('plist').innerHTML = rest.map(p => `
-    <div class="prow">
-      <div class="pr-num">${p.rank}</div>
-      <div class="pr-av"><div class="pr-ph">${p.name[0].toUpperCase()}</div></div>
-      <div class="pr-info">
-        <div class="pr-name">${p.name}</div>
-        <div class="cbadge c${p.classe}">Classe ${p.classe}</div>
+  document.getElementById('plist').innerHTML = rest.map((p,idx) => {
+    const av = getPlayerAvatar(p);
+    const analysis = getAnalysis(p);
+    const rank = idx + 4; // après le podium
+    return `
+      <div class="prow">
+        <div class="pr-num">${rank}</div>
+        <div class="pr-av">
+          ${av ? `<img src="${av}" onerror="this.parentElement.innerHTML='<div class=&quot;pr-ph&quot;>${p.name[0].toUpperCase()}</div>'">`
+               : `<div class="pr-ph">${p.name[0].toUpperCase()}</div>`}
+        </div>
+        <div class="pr-info">
+          <div class="pr-name">${p.name}</div>
+          <div class="pr-sub">${analysis}</div>
+          <div class="cbadge c${p.classe}">Classe ${p.classe}</div>
+        </div>
+        <div class="pr-pp">
+          <div class="pr-oaa">${p.oaa ?? 0} OAA</div>
+          <div class="pr-pi">PI ${p.pi ?? 0}</div>
+          <span>${p.pp.toLocaleString()} PP</span>
+        </div>
       </div>
-      <div class="pr-pp">${p.pp.toLocaleString()} <span>PP</span></div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 function filterClasse(c, btn) {
@@ -827,21 +887,39 @@ function renderProfil() {
     return;
   }
   const classeInfo = allData ? allData.classes.find(c => c.classe === playerData.classe) : null;
+  const analysis = getAnalysis(playerData);
   el.innerHTML = `
-    <div class="ph"><h1>Profil</h1><p>Vos informations personnelles</p></div>
+    <div class="ph"><h1>Profil</h1><p>Votre dossier académique et comportemental</p></div>
     <div class="profil-hero">
       <div class="ph-avatar"><img src="${av}"></div>
       <div style="flex:1">
         <div class="ph-name">${discordUser.username}</div>
-        <div class="ph-sub" style="color:var(--${playerData.classe})">Classe ${playerData.classe}</div>
+        <div class="ph-sub" style="color:var(--${playerData.classe})">Classe ${playerData.classe} — “${analysis}”</div>
         <div class="logout-btn" onclick="logoutDiscord()" style="margin-top:12px">Se déconnecter</div>
       </div>
       <div class="cbadge c${playerData.classe}" style="font-size:13px;padding:7px 14px">Classe ${playerData.classe}</div>
     </div>
     <div class="profil-stats">
-      <div class="ps-card"><div class="ps-val">#${playerData.rank}</div><div class="ps-label">Classement général</div></div>
-      <div class="ps-card"><div class="ps-val">${playerData.pp.toLocaleString()}</div><div class="ps-label">Private Points</div></div>
-      <div class="ps-card"><div class="ps-val">${classeInfo ? classeInfo.cp : '—'}</div><div class="ps-label">CP de votre classe</div></div>
+      <div class="ps-card">
+        <div class="ps-val">${playerData.oaa ?? 0}</div>
+        <div class="ps-label">OAA</div>
+        <div class="ps-sub">Niveau académique</div>
+      </div>
+      <div class="ps-card">
+        <div class="ps-val">${playerData.pi ?? 0}</div>
+        <div class="ps-label">PI</div>
+        <div class="ps-sub">Indice psychologique</div>
+      </div>
+      <div class="ps-card">
+        <div class="ps-val">${playerData.pp.toLocaleString()}</div>
+        <div class="ps-label">Private Points</div>
+        <div class="ps-sub">Performance brute</div>
+      </div>
+      <div class="ps-card">
+        <div class="ps-val">${classeInfo ? classeInfo.cp : '—'}</div>
+        <div class="ps-label">CP de votre classe</div>
+        <div class="ps-sub">Influence collective</div>
+      </div>
     </div>
   `;
 }
