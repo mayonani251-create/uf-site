@@ -350,7 +350,108 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 2px; }
 
-  /* ===================== QUESTIONNAIRE ===================== */
+  /* ===================== EXAMENS ===================== */
+  .examen-hero {
+    background: var(--bg2); border: 1px solid rgba(139,92,246,0.25);
+    border-radius: 14px; padding: 28px; margin-bottom: 20px;
+    position: relative; overflow: hidden;
+  }
+  .examen-hero::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background: linear-gradient(90deg, var(--purple), var(--accent));
+  }
+  .examen-hero-titre {
+    font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800;
+    color: var(--text); margin-bottom: 6px;
+  }
+  .examen-hero-desc { font-size: 11px; color: var(--muted2); line-height: 1.7; margin-bottom: 16px; }
+  .examen-meta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .examen-meta-item {
+    padding: 6px 12px; background: var(--bg3);
+    border: 1px solid var(--border); border-radius: 6px;
+    font-size: 10px; color: var(--muted2);
+  }
+  .examen-timer {
+    font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800;
+    color: var(--accent2); margin: 12px 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .examen-btn {
+    padding: 12px 28px; background: linear-gradient(135deg, var(--purple), var(--accent));
+    border: none; border-radius: 9px; color: white;
+    font-size: 12px; font-family: 'DM Mono', monospace;
+    cursor: pointer; transition: all 0.15s; letter-spacing: 0.05em;
+  }
+  .examen-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .examen-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+  /* Quiz examen */
+  .eq-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+  }
+  .eq-timer-wrap { display: flex; align-items: center; gap: 8px; }
+  .eq-timer {
+    font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  .eq-timer.urgent { color: var(--red); animation: pulse 1s infinite; }
+  .eq-timer.ok { color: var(--accent2); }
+
+  /* Résultat examen */
+  .examen-result-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 20px 0;
+  }
+  .erg-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px; text-align: center;
+  }
+  .erg-val { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; color:var(--text); }
+  .erg-label { font-size:9px; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase; margin-top:5px; }
+
+  /* Historique */
+  .histo-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; margin-bottom: 12px;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .histo-card:hover { border-color: var(--border-h); }
+  .histo-top { display:flex; align-items:center; justify-content:space-between; margin-bottom: 10px; }
+  .histo-titre { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--text); }
+  .histo-date { font-size:10px; color:var(--muted); }
+  .histo-classes { display:flex; gap:8px; flex-wrap:wrap; }
+  .histo-classe-badge {
+    padding: 4px 10px; border-radius:6px; font-size:10px; font-family:'Syne',sans-serif; font-weight:700;
+  }
+  .histo-detail { display:none; margin-top:16px; }
+  .histo-detail.open { display:block; }
+  .histo-player-row {
+    display:flex; align-items:center; gap:10px; padding:8px 0;
+    border-bottom:1px solid var(--border); font-size:11px;
+  }
+  .histo-rank { width:24px; text-align:center; color:var(--muted); font-family:'Syne',sans-serif; font-weight:700; }
+
+  /* Panel admin examen */
+  .exam-admin-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+  .eac {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+  }
+  .eac-titre { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; color:var(--text); margin-bottom:6px; }
+  .eac-desc { font-size:10px; color:var(--muted2); line-height:1.6; margin-bottom:14px; }
+  .eac-btn {
+    width:100%; padding:10px; background:rgba(139,92,246,0.15);
+    border:1px solid rgba(139,92,246,0.3); border-radius:8px;
+    color:var(--purple); font-size:11px; font-family:'DM Mono',monospace;
+    cursor:pointer; transition:all 0.15s;
+  }
+  .eac-btn:hover { background:rgba(139,92,246,0.25); }
+
+  @media (max-width: 768px) {
+    .examen-result-grid { grid-template-columns: repeat(2,1fr); }
+    .exam-admin-cards { grid-template-columns: 1fr; }
+  }
+
   .quiz-card {
     background: var(--bg2); border: 1px solid var(--border);
     border-radius: 14px; padding: 32px; max-width: 680px; margin: 0 auto;
@@ -616,6 +717,9 @@
     <div class="nav-item" onclick="showPage('questionnaire',this)">
       <span class="nav-icon">◈</span> Évaluation
     </div>
+    <div class="nav-item" onclick="showPage('examens',this)">
+      <span class="nav-icon">◧</span> Examens
+    </div>
 
     <span class="nav-section-label">Compte</span>
     <div class="nav-item" onclick="showPage('profil',this)">
@@ -770,8 +874,19 @@
 
     </div>
   </div>
-  <!-- QUESTIONNAIRE -->
-  <div class="page" id="page-questionnaire">
+  <!-- EXAMENS -->
+  <div class="page" id="page-examens">
+    <div class="ph">
+      <div class="ambient-tag">Évaluation institutionnelle</div>
+      <h1>Examens</h1>
+      <p>Les examens officiels de l'académie. Un seul passage par examen. Aucune seconde chance.</p>
+    </div>
+    <div id="examen-content">
+      <div class="loading"><div class="spinner"></div> Chargement...</div>
+    </div>
+  </div>
+
+</main>
     <div class="ph">
       <div class="ambient-tag">Évaluation psychologique</div>
       <h1>Évaluation OAA</h1>
@@ -1267,9 +1382,395 @@ function showPage(name, el) {
   if (name === 'profil') renderProfil();
   if (name === 'admin') { renderAdminState(); populateAdminPlayers(); }
   if (name === 'questionnaire') renderQuiz();
+  if (name === 'examens') renderExamens();
 }
 
-// ===================== QUESTIONNAIRE =====================
+// ===================== EXAMENS =====================
+
+let examenState = {
+  phase: 'accueil',   // accueil | en_cours | resultat
+  questions: [],
+  reponses: [],
+  current: 0,
+  timerInterval: null,
+  secondesRestantes: 900,
+  scoreResult: null,
+  ouvertureRestante: 0
+};
+
+const EXAMENS_INFO = {
+  examen_1: { titre: "Examen I — La Nature du Pouvoir", couleur: "var(--purple)" },
+  examen_2: { titre: "Examen II — L'Individu Face à Lui-Même", couleur: "var(--accent2)" },
+  examen_3: { titre: "Examen III — Connaissance Pure", couleur: "var(--green)" }
+};
+
+async function renderExamens() {
+  const el = document.getElementById('examen-content');
+  if (!el) return;
+
+  // Phase : en cours de quiz
+  if (examenState.phase === 'en_cours') {
+    renderExamenQuiz(el);
+    return;
+  }
+
+  // Phase : résultat immédiat
+  if (examenState.phase === 'resultat') {
+    renderExamenResultat(el);
+    return;
+  }
+
+  // Phase : accueil — récupérer le statut
+  try {
+    const [statusRes, histoRes] = await Promise.all([
+      fetch(`${API}/api/examen/status`),
+      fetch(`${API}/api/examen/historique`)
+    ]);
+    const status = await statusRes.json();
+    const histo = await histoRes.json();
+
+    let html = '';
+
+    // Bloc examen actif
+    if (status.actif) {
+      examenState.ouvertureRestante = status.temps_ouverture_restant;
+      const min = Math.floor(status.temps_ouverture_restant / 60);
+      const sec = status.temps_ouverture_restant % 60;
+      const dejaFait = localStorage.getItem('examen_fait_' + status.id);
+      html += `
+        <div class="examen-hero">
+          <div class="ambient-tag" style="border-color:rgba(139,92,246,0.3);color:var(--purple)">⬡ Examen en cours</div>
+          <div class="examen-hero-titre">${status.titre}</div>
+          <div class="examen-hero-desc">${status.description}</div>
+          <div class="examen-meta">
+            <div class="examen-meta-item">📝 ${status.nb_questions} questions</div>
+            <div class="examen-meta-item">⏱ ${status.duree_minutes} minutes</div>
+            <div class="examen-meta-item">👥 ${status.participants} participant(s)</div>
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-bottom:8px">Fermeture dans</div>
+          <div class="examen-timer" id="ouverture-timer">${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}</div>
+          ${dejaFait
+            ? `<div style="padding:12px 18px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:8px;font-size:11px;color:var(--green)">✅ Vous avez déjà participé à cet examen. Résultats publiés à la fermeture.</div>`
+            : `<button class="examen-btn" onclick="demarrerExamen('${status.id}')">Commencer l'examen →</button>`
+          }
+        </div>
+      `;
+      // Décompte ouverture
+      startOuvertureTimer();
+    } else {
+      html += `
+        <div class="no-ep" style="margin-bottom:20px">
+          <div style="font-size:18px;margin-bottom:8px">◧</div>
+          Aucun examen en cours.<br>
+          <span style="font-size:10px;color:var(--muted)">L'administration lancera le prochain examen lorsque le moment sera venu.</span>
+        </div>
+      `;
+    }
+
+    // Panel admin examens
+    if (discordUser && discordUser.id === OWNER_ID) {
+      html += `
+        <div style="margin-bottom:20px">
+          <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px">
+            <span style="color:var(--red)">⚙</span> Administration — Examens
+          </div>
+          <div class="exam-admin-cards">
+            ${Object.entries(EXAMENS_INFO).map(([id, info]) => `
+              <div class="eac">
+                <div class="eac-titre" style="color:${info.couleur}">${info.titre}</div>
+                <div class="eac-desc">40 questions philosophiques et culturelles. Durée : 15 min. Fenêtre : 1h.</div>
+                <button class="eac-btn" onclick="adminLancerExamen('${id}')">▶ Lancer cet examen</button>
+              </div>
+            `).join('')}
+          </div>
+          ${status.actif ? `<button onclick="adminFermerExamen()" style="padding:10px 20px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:8px;color:var(--red);font-size:11px;font-family:'DM Mono',monospace;cursor:pointer">⏹ Fermer l'examen en cours</button>` : ''}
+          <div id="exam-admin-msg" style="margin-top:10px;font-size:11px"></div>
+        </div>
+      `;
+    }
+
+    // Historique
+    const historique = histo.historique || [];
+    html += `
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:14px">Historique des examens</div>
+        ${!historique.length
+          ? `<div class="no-ep">Aucun examen archivé pour le moment.</div>`
+          : historique.slice().reverse().map((ex, idx) => renderHistoCard(ex, idx)).join('')
+        }
+      </div>
+    `;
+    el.innerHTML = html;
+
+  } catch(e) {
+    el.innerHTML = `<div class="no-ep">⚠️ Impossible de charger les examens. Vérifiez que le bot est en ligne.</div>`;
+  }
+}
+
+function renderHistoCard(ex, idx) {
+  const joueurs = ex.resultats?.joueurs || [];
+  const classes = ex.resultats?.classes || [];
+  return `
+    <div class="histo-card" onclick="toggleHistoDetail(${idx})">
+      <div class="histo-top">
+        <div>
+          <div class="histo-titre">${ex.titre}</div>
+          <div class="histo-date">${ex.date}</div>
+        </div>
+        <span style="color:var(--muted);font-size:12px">▾</span>
+      </div>
+      <div class="histo-classes">
+        ${classes.map(c => `
+          <div class="histo-classe-badge" style="background:rgba(var(--${c.classe}-rgb,100,100,100),0.1);border:1px solid rgba(100,100,100,0.2);color:var(--${c.classe})">
+            Classe ${c.classe} — ${c.score_moyen}% — +${c.oaa_total} OAA
+          </div>
+        `).join('')}
+      </div>
+      <div class="histo-detail" id="histo-detail-${idx}">
+        <div style="font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;margin-top:16px">Classement individuel</div>
+        ${joueurs.map((p, i) => `
+          <div class="histo-player-row">
+            <div class="histo-rank">${i+1}</div>
+            <div style="flex:1">
+              <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:600;color:var(--text)">${p.name}</div>
+              <div class="cbadge c${p.classe}" style="margin-top:2px">Classe ${p.classe}</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text)">${p.score}%</div>
+              <div style="font-size:9px;color:var(--purple);margin-top:2px">+${p.oaa_gagne} OAA</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function toggleHistoDetail(idx) {
+  const el = document.getElementById('histo-detail-' + idx);
+  if (el) el.classList.toggle('open');
+}
+
+async function demarrerExamen(examId) {
+  if (!discordUser) {
+    alert('Connectez-vous avec Discord pour participer à un examen.');
+    return;
+  }
+  try {
+    const res = await fetch(`${API}/api/examen/questions?uid=${discordUser.id}`);
+    if (!res.ok) {
+      const d = await res.json();
+      alert(d.error || 'Impossible de charger les questions.');
+      return;
+    }
+    const d = await res.json();
+    examenState.phase = 'en_cours';
+    examenState.questions = d.questions;
+    examenState.reponses = new Array(d.questions.length).fill(null);
+    examenState.current = 0;
+    examenState.secondesRestantes = 900; // 15 min
+    examenState.scoreResult = null;
+    examenState.examId = examId;
+    const el = document.getElementById('examen-content');
+    renderExamenQuiz(el);
+    startExamenTimer();
+  } catch(e) {
+    alert('Erreur réseau. Réessayez.');
+  }
+}
+
+function renderExamenQuiz(el) {
+  if (!el) return;
+  const q = examenState.questions[examenState.current];
+  const total = examenState.questions.length;
+  const pct = (examenState.current / total) * 100;
+  const letters = ['A','B','C','D'];
+  const sec = examenState.secondesRestantes;
+  const timerStr = `${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}`;
+  const urgent = sec < 120;
+  const selected = examenState.reponses[examenState.current];
+
+  el.innerHTML = `
+    <div class="quiz-card" style="max-width:760px">
+      <div class="eq-header">
+        <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--muted2)">
+          Question ${examenState.current + 1} / ${total}
+        </div>
+        <div class="eq-timer-wrap">
+          <span style="font-size:10px;color:var(--muted)">Temps restant</span>
+          <div class="eq-timer ${urgent ? 'urgent' : 'ok'}" id="eq-timer-display">${timerStr}</div>
+        </div>
+      </div>
+      <div class="quiz-progress" style="margin-bottom:24px">
+        <div class="quiz-bar"><div class="quiz-bar-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="quiz-question">${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((opt, i) => `
+          <div class="quiz-option ${selected === i ? 'selected' : ''}" onclick="selectExamenAnswer(${i})">
+            <div class="quiz-option-letter">${letters[i]}</div>
+            <span>${opt}</span>
+          </div>
+        `).join('')}
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+        <div style="font-size:10px;color:var(--muted)">
+          ${examenState.reponses.filter(r => r !== null).length} / ${total} réponses
+        </div>
+        <div style="display:flex;gap:8px">
+          ${examenState.current > 0 ? `<button class="quiz-btn" style="background:var(--bg3);color:var(--muted2);border:1px solid var(--border)" onclick="navExamen(-1)">← Précédent</button>` : ''}
+          ${examenState.current < total - 1
+            ? `<button class="quiz-btn" onclick="navExamen(1)">Suivant →</button>`
+            : `<button class="quiz-btn" style="background:linear-gradient(135deg,var(--purple),var(--accent))" onclick="soumettreExamen()">Soumettre l'examen ✓</button>`
+          }
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function selectExamenAnswer(idx) {
+  examenState.reponses[examenState.current] = idx;
+  const el = document.getElementById('examen-content');
+  renderExamenQuiz(el);
+}
+
+function navExamen(dir) {
+  examenState.current = Math.max(0, Math.min(examenState.questions.length - 1, examenState.current + dir));
+  const el = document.getElementById('examen-content');
+  renderExamenQuiz(el);
+}
+
+function startExamenTimer() {
+  if (examenState.timerInterval) clearInterval(examenState.timerInterval);
+  examenState.timerInterval = setInterval(() => {
+    examenState.secondesRestantes--;
+    const disp = document.getElementById('eq-timer-display');
+    if (disp) {
+      const s = examenState.secondesRestantes;
+      disp.textContent = `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+      if (s < 120) disp.className = 'eq-timer urgent';
+    }
+    if (examenState.secondesRestantes <= 0) {
+      clearInterval(examenState.timerInterval);
+      soumettreExamen();
+    }
+  }, 1000);
+}
+
+function startOuvertureTimer() {
+  if (window._ouvertureInterval) clearInterval(window._ouvertureInterval);
+  window._ouvertureInterval = setInterval(() => {
+    examenState.ouvertureRestante--;
+    const el = document.getElementById('ouverture-timer');
+    if (el) {
+      const s = examenState.ouvertureRestante;
+      el.textContent = `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+    }
+    if (examenState.ouvertureRestante <= 0) {
+      clearInterval(window._ouvertureInterval);
+      renderExamens();
+    }
+  }, 1000);
+}
+
+async function soumettreExamen() {
+  if (examenState.timerInterval) clearInterval(examenState.timerInterval);
+  if (!discordUser) return;
+  try {
+    const res = await fetch(`${API}/api/examen/soumettre`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ uid: discordUser.id, reponses: examenState.reponses })
+    });
+    const d = await res.json();
+    if (d.success) {
+      localStorage.setItem('examen_fait_' + examenState.examId, '1');
+      examenState.phase = 'resultat';
+      examenState.scoreResult = d;
+      const el = document.getElementById('examen-content');
+      renderExamenResultat(el);
+    } else {
+      alert(d.error || 'Erreur lors de la soumission.');
+    }
+  } catch(e) {
+    alert('Erreur réseau lors de la soumission.');
+  }
+}
+
+function renderExamenResultat(el) {
+  if (!el || !examenState.scoreResult) return;
+  const r = examenState.scoreResult;
+  const pct = r.score;
+  let mention, couleur, icon;
+  if (pct >= 90) { mention = 'Exceptionnel'; couleur = 'var(--gold)'; icon = '🏆'; }
+  else if (pct >= 75) { mention = 'Très bien'; couleur = 'var(--purple)'; icon = '⚡'; }
+  else if (pct >= 60) { mention = 'Bien'; couleur = 'var(--accent2)'; icon = '◈'; }
+  else if (pct >= 40) { mention = 'Passable'; couleur = 'var(--green)'; icon = '◉'; }
+  else { mention = 'Insuffisant'; couleur = 'var(--red)'; icon = '◦'; }
+
+  el.innerHTML = `
+    <div class="quiz-card" style="max-width:680px;text-align:center">
+      <div style="font-size:40px;margin-bottom:12px">${icon}</div>
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px">Examen soumis</div>
+      <div style="font-size:52px;font-family:'Syne',sans-serif;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:12px 0">
+        ${pct}<span style="font-size:22px;-webkit-text-fill-color:var(--muted)">%</span>
+      </div>
+      <div style="font-size:15px;font-weight:700;color:${couleur};font-family:'Syne',sans-serif;margin-bottom:20px">${mention}</div>
+      <div class="examen-result-grid">
+        <div class="erg-card"><div class="erg-val">${r.correct}</div><div class="erg-label">Correctes</div></div>
+        <div class="erg-card"><div class="erg-val">${r.total - r.correct}</div><div class="erg-label">Incorrectes</div></div>
+        <div class="erg-card"><div class="erg-val">${r.total}</div><div class="erg-label">Total</div></div>
+        <div class="erg-card"><div class="erg-val" style="color:var(--purple)">+${r.oaa_gagne}</div><div class="erg-label">OAA gagné</div></div>
+      </div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);padding-top:16px;margin-top:8px">
+        Vos gains OAA seront appliqués à la fermeture officielle de l'examen.<br>
+        Le classement complet sera publié sur Discord et dans l'historique.
+      </div>
+      <button class="quiz-btn" style="margin-top:20px" onclick="examenState.phase='accueil';renderExamens()">← Retour aux examens</button>
+    </div>
+  `;
+}
+
+async function adminLancerExamen(examId) {
+  const msg = document.getElementById('exam-admin-msg');
+  try {
+    const res = await fetch(`${API}/api/admin/examen/lancer`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({password: ADMIN_PASS, examen_id: examId})
+    });
+    const d = await res.json();
+    if (d.success) {
+      if (msg) { msg.style.color='var(--green)'; msg.textContent='✅ Examen lancé ! Annonce envoyée sur Discord.'; }
+      setTimeout(renderExamens, 1500);
+    } else {
+      if (msg) { msg.style.color='var(--red)'; msg.textContent='❌ ' + (d.error||'Erreur'); }
+    }
+  } catch(e) {
+    if (msg) { msg.style.color='var(--red)'; msg.textContent='❌ Erreur réseau'; }
+  }
+}
+
+async function adminFermerExamen() {
+  const msg = document.getElementById('exam-admin-msg');
+  try {
+    const res = await fetch(`${API}/api/admin/examen/fermer`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({password: ADMIN_PASS})
+    });
+    const d = await res.json();
+    if (d.success) {
+      if (msg) { msg.style.color='var(--green)'; msg.textContent='✅ Examen fermé. Résultats en cours de calcul...'; }
+      setTimeout(renderExamens, 2000);
+    } else {
+      if (msg) { msg.style.color='var(--red)'; msg.textContent='❌ ' + (d.error||'Erreur'); }
+    }
+  } catch(e) {
+    if (msg) { msg.style.color='var(--red)'; msg.textContent='❌ Erreur réseau'; }
+  }
+}
+
+
 
 const QUIZ_QUESTIONS = [
   {
